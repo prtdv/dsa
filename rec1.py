@@ -22,7 +22,7 @@ def arrSum(arr: list[int], n: int) -> int:
 
 # print(arrSum(arr, n))
 
-strx = "Geeks for Geeks yM"
+strx = "My Geeks for Geeks"
 n = len(strx) - 1
 
 
@@ -65,13 +65,13 @@ def palindromeCheck(string, l, r):
     return palindromeCheck(string, l + 1, r - 1)
 
 
-print(palindromeCheck(string, l, r))
+# print(palindromeCheck(string, l, r))
 
 
 def count_digits(n):
     if n < 10:
         return 1
-    return 1 + count_digits(int(n / 10))
+    return 1 + count_digits(n // 10)
 
 
 def reverse(s):
