@@ -85,7 +85,7 @@ def countleaves(root):
 
 def invertbt(root):
     if not root:
-        return
+        return None
     temp = root.left
     root.left = root.right
     root.right = temp
