@@ -70,4 +70,27 @@ def findtargetinbst(root, target):
         return findtargetinbst(root.right, target)
 
 
+count = 0
+
+
 def countleaves(root):
+    if not root:
+        return 0
+    if not root.left and not root.right:
+        return 1
+    left = countleaves(root.left)
+    right = countleaves(root.right)
+    return left + right
+
+
+def invertbt(root):
+    if not root:
+        return
+    temp = root.left
+    root.left = root.right
+    root.right = temp
+
+    invertbt(root.left)
+    invertbt(root.right)
+
+    return root
