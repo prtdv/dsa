@@ -70,9 +70,6 @@ def findtargetinbst(root, target):
         return findtargetinbst(root.right, target)
 
 
-count = 0
-
-
 def countleaves(root):
     if not root:
         return 0
@@ -106,3 +103,35 @@ def checkidenticalt(root1, root2):
     left = checkidenticalt(root1.left, root2.left)
     right = checkidenticalt(root1.right, root2.right)
     return left and right
+
+
+# def symmetric(root):
+#     if not root:
+#         return True
+#     if root.left != root.right:
+#         return False
+#     left = symmetric(root.left)
+#     right = symmetric(root.right)
+#     return left and right
+
+
+def searchnormal(root, target):
+    if not root:
+        return False
+    if root.val == target:
+        return True
+    left = searchnormal(root.left, target)
+    right = searchnormal(root.right, target)
+    return left or right
+
+
+def countGreaterThanTarget(root, target):
+    if not root:
+        return 0
+    if root.val > target:
+        count = 1
+    else:
+        count = 0
+    left = countGreaterThanTarget(root.left, target)
+    right = countGreaterThanTarget(root.right, target)
+    return count + left + right
