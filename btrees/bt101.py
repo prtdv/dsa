@@ -105,16 +105,6 @@ def checkidenticalt(root1, root2):
     return left and right
 
 
-# def symmetric(root):
-#     if not root:
-#         return True
-#     if root.left != root.right:
-#         return False
-#     left = symmetric(root.left)
-#     right = symmetric(root.right)
-#     return left and right
-
-
 def searchnormal(root, target):
     if not root:
         return False
@@ -129,9 +119,28 @@ def countGreaterThanTarget(root, target):
     if not root:
         return 0
     if root.val > target:
-        count = 1
+        count = (
+            1  # not return 1, as it may cause early return and never entern traversal
+        )
     else:
         count = 0
     left = countGreaterThanTarget(root.left, target)
     right = countGreaterThanTarget(root.right, target)
     return count + left + right
+
+
+def symmetric(root):
+    if not root:
+        return True
+
+    def is_mirror(left, right):
+        if not left and not right:
+            return True
+        if (not left and right) or (left and not right):
+            return False
+        if left.val != right.val:
+            return False
+
+        return is_mirror(left.left, right.right) and is_mirror(left.right, right.left)
+
+    return is_mirror(root.left, root.right)
